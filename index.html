@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>価格比較</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="app-header">
+        <h1>価格比較</h1>
+        <p>価格・容量・個数・ポイントから、一番お得な商品を比べます。</p>
+      </header>
+
+      <section id="items" class="items" aria-label="比較する商品"></section>
+
+      <div class="actions">
+        <button id="addItem" class="button secondary" type="button">+ 商品を追加</button>
+        <button id="reset" class="button ghost" type="button">リセット</button>
+      </div>
+
+      <section id="result" class="result" tabindex="-1" aria-live="polite">
+        <p class="result-label">比較結果</p>
+        <h2 id="winnerText">価格を入力してください</h2>
+        <div id="ranking" class="ranking"></div>
+      </section>
+    </main>
+
+    <template id="itemTemplate">
+      <article class="item-card">
+        <div class="card-head">
+          <label class="item-name-label">
+            <span>商品名</span>
+            <input class="item-name js-field" type="text" autocomplete="off" />
+          </label>
+          <span class="badge" hidden>最安</span>
+          <button class="remove-button" type="button" aria-label="商品を削除">×</button>
+        </div>
+
+        <div class="field-grid">
+          <label>
+            <span>価格</span>
+            <input class="price js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="例 298" />
+          </label>
+
+          <label>
+            <span>容量</span>
+            <input class="amount js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="例 500" />
+          </label>
+
+          <label>
+            <span>単位</span>
+            <select class="unit js-field">
+              <option value="">未入力</option>
+              <option value="ml">ml</option>
+              <option value="l">L</option>
+              <option value="g">g</option>
+              <option value="kg">kg</option>
+              <option value="piece">個</option>
+              <option value="sheet">枚</option>
+              <option value="pack">袋</option>
+              <option value="roll">ロール</option>
+            </select>
+          </label>
+
+          <label>
+            <span>個数</span>
+            <input class="count js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="未入力は1" />
+          </label>
+
+          <label class="wide-field">
+            <span>ポイント還元</span>
+            <div class="suffix-field">
+              <input class="point js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="例 10" />
+              <span>%</span>
+            </div>
+          </label>
+        </div>
+
+        <dl class="calc">
+          <div>
+            <dt>実質価格</dt>
+            <dd class="effective">-</dd>
+          </div>
+          <div>
+            <dt>単価</dt>
+            <dd class="unit-price">-</dd>
+          </div>
+        </dl>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
