@@ -58,6 +58,9 @@ select {
 }
 
 .top-result {
+  position: sticky;
+  top: max(8px, env(safe-area-inset-top));
+  z-index: 10;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
