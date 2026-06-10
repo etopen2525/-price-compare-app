@@ -41,6 +41,10 @@ select {
   padding: 20px 14px 28px;
 }
 
+body.has-top-result .app {
+  padding-top: calc(82px + env(safe-area-inset-top, 0px));
+}
+
 .app-header {
   padding: 4px 2px 14px;
 }
@@ -58,8 +62,10 @@ select {
 }
 
 .top-result {
-  position: sticky;
-  top: max(8px, env(safe-area-inset-top));
+  position: fixed;
+  top: calc(8px + env(safe-area-inset-top, 0px));
+  left: max(14px, calc((100vw - 560px) / 2 + 14px));
+  right: max(14px, calc((100vw - 560px) / 2 + 14px));
   z-index: 10;
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -69,7 +75,7 @@ select {
   border-radius: 8px;
   background: #e3f5ea;
   box-shadow: var(--shadow);
-  margin: 0 0 12px;
+  margin: 0;
   padding: 10px 12px;
 }
 

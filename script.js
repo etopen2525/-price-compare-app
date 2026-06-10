@@ -85,6 +85,11 @@ function setPointMode(card, mode) {
   card.querySelector(".point").placeholder = placeholder;
 }
 
+function setTopResultVisible(isVisible) {
+  topResultEl.hidden = !isVisible;
+  document.body.classList.toggle("has-top-result", isVisible);
+}
+
 function moveToNextField(event) {
   if (event.key !== "Enter") return;
   event.preventDefault();
@@ -160,7 +165,7 @@ function update() {
 
   const validItems = items.filter((item) => item.valid);
   if (validItems.length < 2) {
-    topResultEl.hidden = true;
+    setTopResultVisible(false);
     winnerTextEl.textContent = "2つ以上の価格を入力してください";
     rankingEl.innerHTML = `<p class="message">入力すると自動で比較します。</p>`;
     return;
@@ -168,7 +173,7 @@ function update() {
 
   const groups = new Set(validItems.map((item) => item.group));
   if (groups.size > 1) {
-    topResultEl.hidden = true;
+    setTopResultVisible(false);
     winnerTextEl.textContent = "単位が違うため比較できません";
     rankingEl.innerHTML = `<p class="message">同じ種類の単位を選ぶか、単位を未入力にそろえてください。</p>`;
     return;
@@ -180,7 +185,7 @@ function update() {
   winner.card.querySelector(".badge").hidden = false;
 
   topResultTextEl.textContent = `${winner.number} ${winner.name} が一番安いです`;
-  topResultEl.hidden = false;
+  setTopResultVisible(true);
   winnerTextEl.textContent = `一番お得: ${winner.number} ${winner.name}`;
   rankingEl.innerHTML = ranked
     .map((item, index) => {
