@@ -56,6 +56,41 @@ select {
   font-size: 14px;
 }
 
+.top-result {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #b9dfc8;
+  border-radius: 8px;
+  background: #e3f5ea;
+  box-shadow: var(--shadow);
+  margin: 0 0 12px;
+  padding: 10px 12px;
+}
+
+.top-result[hidden] {
+  display: none;
+}
+
+.top-result-label {
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 8px;
+}
+
+.top-result strong {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 15px;
+}
+
 .items {
   display: grid;
   gap: 12px;
@@ -76,14 +111,36 @@ select {
 
 .card-head {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
   align-items: end;
   gap: 8px;
   margin-bottom: 12px;
 }
 
+.item-title {
+  align-self: center;
+}
+
+.item-number {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: #eef2ec;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.item-card.best .item-number {
+  background: var(--accent);
+  color: #fff;
+}
+
 .item-name-label span,
-.field-grid label > span {
+.field-grid label > span,
+.field-label {
   display: block;
   margin-bottom: 5px;
   color: var(--muted);
@@ -144,6 +201,39 @@ select:focus {
 
 .wide-field {
   grid-column: 1 / -1;
+}
+
+.point-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+}
+
+.point-mode {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 96px;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.point-mode-button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.point-mode-button + .point-mode-button {
+  border-left: 1px solid var(--line);
+}
+
+.point-mode-button.active {
+  background: var(--accent);
+  color: #fff;
 }
 
 .suffix-field {
@@ -284,5 +374,13 @@ select:focus {
   .calc,
   .actions {
     grid-template-columns: 1fr;
+  }
+
+  .point-row {
+    grid-template-columns: 1fr;
+  }
+
+  .point-mode {
+    width: 100%;
   }
 }

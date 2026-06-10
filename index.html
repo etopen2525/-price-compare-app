@@ -13,6 +13,11 @@
         <p>価格・容量・個数・ポイントから、一番お得な商品を比べます。</p>
       </header>
 
+      <section id="topResult" class="top-result" aria-live="polite" hidden>
+        <span class="top-result-label">最安</span>
+        <strong id="topResultText"></strong>
+      </section>
+
       <section id="items" class="items" aria-label="比較する商品"></section>
 
       <div class="actions">
@@ -30,6 +35,9 @@
     <template id="itemTemplate">
       <article class="item-card">
         <div class="card-head">
+          <div class="item-title">
+            <span class="item-number"></span>
+          </div>
           <label class="item-name-label">
             <span>商品名</span>
             <input class="item-name js-field" type="text" autocomplete="off" />
@@ -69,13 +77,19 @@
             <input class="count js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="未入力は1" />
           </label>
 
-          <label class="wide-field">
-            <span>ポイント還元</span>
-            <div class="suffix-field">
-              <input class="point js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="例 10" />
-              <span>%</span>
+          <div class="point-field wide-field">
+            <span class="field-label">ポイント還元</span>
+            <div class="point-row">
+              <div class="point-mode" aria-label="ポイント還元の入力方式">
+                <button class="point-mode-button active" type="button" data-mode="amount">円</button>
+                <button class="point-mode-button" type="button" data-mode="percent">%</button>
+              </div>
+              <div class="suffix-field">
+                <input class="point js-field" type="number" inputmode="decimal" min="0" step="0.01" placeholder="例 100" />
+                <span class="point-suffix">円</span>
+              </div>
             </div>
-          </label>
+          </div>
         </div>
 
         <dl class="calc">
