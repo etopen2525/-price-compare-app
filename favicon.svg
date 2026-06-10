@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Price compare icon">
+  <rect width="64" height="64" rx="14" fill="#fffefb"/>
+  <path d="M32 14v36" fill="none" stroke="#191919" stroke-width="3" stroke-linecap="round"/>
+  <path d="M19 27l26-8" fill="none" stroke="#191919" stroke-width="3" stroke-linecap="round"/>
+  <path d="M19 27l-8 17h16L19 27zM45 19l-8 13h16L45 19z" fill="none" stroke="#191919" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M23 50h18" fill="none" stroke="#191919" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 43h12" fill="none" stroke="#191919" stroke-width="3" stroke-linecap="round"/>
+</svg>
